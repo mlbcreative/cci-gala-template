@@ -1,0 +1,60 @@
+//THIS IS WHERE WE DEFINE OUR COLORS FOR THE PAGE
+
+
+//CCI BRAND COLORS===================================================
+
+$cci-blue: #1c517d;
+$cci-yellow: #ffd200;
+$cci-gray: #cccccc;
+
+
+//CCI EVENT THEME COLORS============================================
+// This is where we define the color palette for 
+$cci-primary: #0A496C;
+$cci-secondary: #FFF7E7;
+$cci-accent: #E2B25D;
+
+//SECTION THEMES====================================================
+//here is where we can define themes for each section.
+//For example a section may have a dark background with a lighter font:
+/*
+	.dark {
+		background:black;
+		color:white
+		}
+	*/
+
+@mixin cci-dark() {
+	background: $cci-primary;
+	color:$cci-secondary;
+	
+	button, a.button {
+		background: $cci-accent;
+		
+		color: #fff;
+	}
+	
+}
+
+@mixin cci-light() {
+	background: $cci-secondary;
+	color:$cci-primary;
+	
+	button, a.button {
+		background: $cci-accent;
+		
+		color: #fff;
+	}
+	
+}
+
+@mixin cci-clear() {
+	background: #ffffff;
+	color:$cci-primary;
+	
+	button, a.button {
+		background: $cci-accent;
+		color: #fff;
+	}
+	
+}

@@ -1,0 +1,94 @@
+<div class="page-wrapper">
+	
+	<div class="header" id="cci-gala-header">
+		<div class="cci-header-left">
+			<a class="button cci-menu-toggle hide-for-large" id="cci-menu-open" href="#"><span></span></a>
+			<img src="https://cci-tnt.s3.amazonaws.com/2018/assets/img/cci-logo-ko.png" alt="CCI Logo">
+		</div>
+		<div class="cci-header-right">
+			
+			<div class="nav show-for-large" id="desktopNav">
+				
+				<a href="#" class="desktop-link eventInfo">Event Info</a>
+				
+				<a href="#" class="desktop-link gallery">Gallery</a>
+				
+				<a  href="#" class="desktop-link stories">Stories</a>
+				
+				<a href="#" class="desktop-link aboutCCI">Our Mission</a>
+				
+				<a href="#" class="desktop-link sponsor">Sponsorship</a>
+				
+				<a href="#" class="desktop-link auctionIndie">Auction</a>
+				
+				
+			</div>
+			
+			<a class="button show-for-medium" id="cci-header-donate" href="#" onclick="buyTickets('https://secure.cci.org/site/Donation2?df_id=2081&mfc_pref=T&2081.donation=form1')">DONATE</a>
+			<a class="button" id="cci-header-tix" href="#" onclick="buyTickets('http://support.cci.org/site/Ecommerce?store_id=2461')">BUY TICKETS</a><!-- COMMENT:YOU CAN CHANGE THE URL FOR THE TICKET PAGE HERE butTickets([URL of ticket page]) MAKE SURE YOU PUT THE URL IN SINGLE QUOTES-->
+		</div>
+		
+	</div>
+		
+	<!-- COMMENT:THIS IS THE MOBILE "OFF CANVAS MENU FOR THE PAGE. IT ONLY APPEARS ON MOBILE DEVICES AND IS TUCKED AWAY OUT OF THE VIEWPORT UNTIL CALLED UPON -->
+	<div class="cci-off-canvas-menu hide-for-large">
+		
+		<div class="nav" id="cci-mobile-nav">
+			
+				<a href="#" class="navitem_1 eventInfo">Event Info</a>
+				
+				<a href="#" class="navitem_2 gallery">Gallery</a>
+				
+				<a href="#" class="navitem_3 stories">Stories</a>
+				
+				<a href="#" class="navitem_4 aboutCCI">Our Mission</a>
+				
+				<a href="#" class="navitem_5 sponsor">Sponsorship</a>
+				
+				<a href="#" class="navitem_5 auction">Auction</a>
+				
+				<!-- COMMENT:YOU CAN CHANGE THE LINK OF THE DONATE BUTTON BY MODIFYING THE HREF TAG -->
+				<a href="#" class="navitem_6" target="_blank" onclick="buyTickets('https://secure.cci.org/site/Donation2?df_id=2081&mfc_pref=T&2081.donation=form1')">Donate</a>
+			
+		</div>
+		
+		
+		<a class="button" id="cci-menu-close">
+			<span class="v"></span>
+			<span class="h"></span>
+		</a>
+		
+<!--
+		<div class="menu-logo">
+			<img src="https://cci-tnt.s3.amazonaws.com/2018/assets/img/cci-logo-ko.png" alt="Canine Companions for Independence">
+		</div>
+-->
+		
+	</div>
+	
+	
+	<div class="cci-off-canvas-content" id="cci-page-content">
+		
+		<!-- COMMENT:THIS IS WHERE WE SWAP OUT OUR TEMPLATES. IF WE WANT TO CHANGE TEMPLATES JUST CHANGE THE NAME TO THE TEMPLATE YOU WANT TO USE. TEMPLATES CAN BE FOUND IN THE PARTIALS DIRECTORY -->
+		<!--EX: [template name here -->
+		
+		{{> template_3 }}
+		
+		<!-- COMMENT: FOOTER -->
+		<footer>
+			<div class="row">
+				<div class="small-12 columns">
+					<div class="nav">
+						Copyright &copy; 2019 Canine Companions for Independence, Inc. All rights reserved. <a href="http://cci.org" target="_blank">Visit CCI.org</a> |  <a href="http://support.cci.org/site/Survey?ACTION_REQUIRED=URI_ACTION_USER_REQUESTS&SURVEY_ID=2202&_ga=1.149987316.319444563.1486580760" target="_blank">Contact Us</a> |  <a href="http://www.cci.org/privacy-policy.html" target="_blank">Privacy Policy </a>| <a href="http://www.cci.org/terms-of-use.html" target="_blank">Terms of Use</a>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		
+	</div> <!-- COMMENT:END OFF CANVAS CONTENT -->
+	
+	
+</div>
+
+{{> stories-reveal }}

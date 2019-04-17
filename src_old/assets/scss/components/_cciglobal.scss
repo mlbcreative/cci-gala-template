@@ -1,0 +1,999 @@
+body {
+	//background:$cci-yellow;
+	font-family: 'Montserrat', sans-serif;
+}
+
+button {
+	outline: none;
+	cursor: pointer;
+}
+
+p {
+	font-size: 0.9375rem;
+	line-height: 1.6;
+	font-weight: 300;
+	
+	@include breakpoint(medium){
+		font-size: 0.875rem;
+	}
+	
+}
+h1,h2,h3,h4,h5 {
+	font-weight: 700;
+}
+button, a.button, button[type="button"] {
+	border-radius:5px;
+	box-shadow: 1px 3px 4px rgba(0,0,0,0.25);
+	font-weight: 600;
+	font-size: 0.875rem;
+	padding:0.75rem 1.5rem;
+	margin-bottom: 0.5rem;
+}
+a {
+	color: $cci-primary;
+}
+
+//GLOBAL ANIMATION CLASSES========================================
+.slide-up-fade {
+	@include mui-animation(fade("in"),slide("in","up"));
+	animation-duration: 0.5s;
+	visibility: visible !important;
+}
+
+.fade-up {
+	@include mui-animation(fade("in"));
+	animation-duration: 0.5s;
+	visibility: visible !important;
+}
+
+.bouncy {
+	@include mui-animation(slide("in", "down"));
+	animation-duration: 1.5s;
+	animation-iteration-count: infinite;
+	animation-direction: alternate;
+}
+
+
+//CCI OFF CANVAS STYLES===========================================
+
+.page-wrapper {
+	position: relative;
+    overflow: hidden;
+}
+
+.cci-off-canvas-menu {
+	position: fixed;
+	height:100%;
+	width:100%;
+	background: $cci-blue;
+	z-index: 1;
+	backface-visibility: hidden;
+	transform: translate3d(-100%,0,0);
+	transition-duration: 750ms;
+	transition-property: transform;
+	@include menu-slide-easing();
+	transition-delay: 500ms;
+	
+	@include breakpoint(medium) {
+		width: 300px;
+	}
+	
+	&.active {
+		transform: translate3d(0,0,0);
+		
+		@include breakpoint(medium) {
+			transform: translate3d(0,0,0);
+		}
+	}
+	
+	.menu-logo {
+		position: absolute;
+		bottom: 0.9375rem;
+		left:0;
+		width: 100%;
+		width: 100vw;
+		img {
+			display: block;
+			margin:auto;
+		}
+	}
+	
+	.logo-ko {
+		position: absolute;
+		top:0.9375rem;
+		right:0.9375rem;
+	}
+	
+	a.button, nav {
+		position: absolute;
+		top:0;
+		left:0;
+		
+	}
+	
+	a.button {
+		background: none;
+		//position: relative;
+		height:2.5rem;
+		width: 2.5rem;
+		top:0.9375rem;
+		left:0.9375rem;
+		box-shadow: none;
+		padding:0;
+		span {
+			display:block;
+			height:1px;
+			width: 100%;
+			background:white;
+			position: absolute;
+			top:50%;
+			left:0;
+			opacity:0;
+			transition: all 300ms ease-in-out;
+		}
+		
+		&.active {
+			span {
+				opacity: 1;
+				&.v {
+				transform: rotate(-45deg);
+				}
+				&.h {
+					transform: rotate(45deg);
+				}
+			}
+		}
+	}
+	
+	.nav {
+		color: white;
+		padding: 5rem 0 0 1rem;
+		height:100%;
+		visibility: hidden;
+		a {
+			display: block;
+			color: white;
+			width: 100%;
+			font-weight: 400;
+			font-size: 3vh;
+			
+			@include breakpoint(medium) {
+				font-size: 2vh;
+			}
+			
+			//animation-fill-mode: forwards;
+				//text-align: center;
+				height: 10vh;
+				
+				@include breakpoint(medium) {
+					height: 5vh;
+				}
+				//visibility: hidden;
+				
+				
+				&.navitem_6 {
+					color: $cci-yellow;
+				}
+			
+		}
+	}
+}
+
+
+.cci-off-canvas-content {
+	
+	position: relative;
+	//transition
+	backface-visibility: hidden;
+	transform: translate3d(0,0,0);
+	transition-duration: 750ms;
+	transition-property: transform;
+	@include menu-slide-easing();
+	transition-delay: 500ms;
+	
+	&.active {
+		transform: translate3d(100%,0,0);
+		
+		@include breakpoint(medium) {
+			transform: translate3d(300px,0,0)
+		}
+	}
+	
+	
+}
+
+
+//END CCI OFF CANVAS STYLES===========================================
+
+//GLOBAL HEADER=======================================================
+
+.header#cci-gala-header {
+	position: fixed;
+	//height:8vh;
+	background: white;
+	width: 100%;
+	z-index: 2;
+	box-shadow: 0 3px 3px rgba(0,0,0,0.25);
+	padding:0.5rem 0;
+	top:0;
+	left: 0;
+	
+	//transition
+	backface-visibility: hidden;
+	transform: translate3d(0,0,0);
+	transition-duration: 750ms;
+	transition-property: transform;
+	@include menu-slide-easing();
+	transition-delay: 500ms;
+	//FLEX
+	display: -webkit-flex;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	
+	.nav {
+		display: inline-block;
+		margin-right:0.9375rem;
+		a {
+			color:#4d4d4d;
+			display: inline-block;
+			margin-right:0.9375rem;
+			font-size:1rem !important;
+			&.inview {
+				color: $cci-blue;
+				font-weight: 700;
+			}
+			
+		}
+	}
+	
+	
+	&.active {
+		transform: translate3d(100%,0,0);
+		
+		@include breakpoint(medium) {
+			transform: translate3d(300px,0,0)
+		}
+	}
+	
+	
+	.cci-header-left {
+		flex-shrink:  1;
+		
+		@include breakpoint(large) {
+			margin-left: 0.9375rem;
+		}
+	}
+	
+	.cci-header-right {
+		flex-grow:2;
+		text-align: right;
+	}
+	
+	
+	a.button.cci-menu-toggle {
+		display: inline-block;
+		width: 2rem;
+		height: 2.5rem;
+		margin:0 0.9375rem;
+		box-shadow: none;
+		position: relative;
+		background:none !important;
+		transition: all 250ms ease-in-out;
+		transition-delay: 750ms;
+		padding:0;
+		
+		span, span::before, span::after {
+			display: block;
+			height:2px;
+			background: $cci-blue;
+			width: 2rem;
+			position: absolute;
+			top:50%;
+			margin-top:-1px;
+			transition: all 250ms ease-in-out;
+			transition-delay: 500ms;
+		}
+		
+		span::before {
+			content: '';
+			display: block;
+			transform: translate3d(0,-7px,0);
+		}
+		
+		span::after {
+			content: '';
+			display: block;
+			transform: translate3d(0,7px,0);
+		}
+		
+		&.open{
+			transition-delay: 0ms;
+			transform: rotate(90deg);
+			opacity: 0;
+			span::before, span::after {
+				transform: translate3d(0,0,0);
+				transition-delay: 0ms;
+			}
+		}
+		
+	}
+	
+	a.button#cci-header-tix {
+		padding:0.9375rem 1.25rem;
+		background: $cci-blue;
+		margin:0 0.9375rem;
+		color: white;
+		font-weight: bold;
+		border-radius: 5px;
+		font-size: 0.875rem;
+	}
+	a.button#cci-header-donate {
+		padding:0.9375rem 1.25rem;
+		background: $cci-yellow;
+		margin:0;
+		color: $cci-blue;
+		font-weight: bold;
+		border-radius: 5px;
+		font-size: 0.875rem;
+	}
+}
+
+//PAGE CONTENT========================================================
+//THIS CONTAINS THE BASE STYLES FOR THE BASIC TEMPLATE LAYOUT
+.cci-page-top {
+	height:100vh; //100% of the viewport
+	position: relative;
+	background: $cci-yellow;
+	background-repeat: no-repeat !important;
+	
+	@include breakpoint(small) {
+		background:url('https://cci-landing-pages.s3.amazonaws.com/tnt2017/assets/img/cci-gala-bg-mobile.jpg');
+		background-position: 50% 0;
+		background-size: contain;
+	}
+	
+	@include breakpoint(medium) {
+		background:url('https://cci-landing-pages.s3.amazonaws.com/tnt2017/assets/img/cci-gala-bg-tablet.jpg');
+		background-position: 50% 0;
+		background-size: cover;
+	}
+	
+	@include breakpoint(large) {
+		background:url('https://cci-landing-pages.s3.amazonaws.com/tnt2017/assets/img/cci-desktop-bg.jpg');
+		background-position: 50% 0;
+		background-size: cover;
+	}
+	
+	.text-box {
+		position: absolute;
+		
+		
+		@include breakpoint(small) {
+			top:85px;
+			left:50%;
+			padding:0.9375rem;
+			background:#ffffff;
+			width: 90%;
+			width: 90vw;
+			transform: translate3d(-50%,0,0);
+			box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+		}
+		
+		
+		
+		@include breakpoint(medium) {
+			top:25%;
+			left:0;
+			width: auto;
+			padding:1.875rem 2.5rem 1.875rem 1.875rem;
+			background:#ffffff;
+			box-shadow: 1px 2px 4px rgba(0,0,0,0.25);
+			transform: translate3d(0,-50%,0);
+		}
+		
+		@include breakpoint(large) {
+			top:50%;
+			left:0;
+			padding:1.875rem 2.5rem 1.875rem 1.875rem;
+			background:#ffffff;
+			box-shadow: 1px 2px 4px rgba(0,0,0,0.25);
+			transform: translate3d(0,-50%,0);
+		}
+		
+		p {
+			color: $cci-primary;
+			line-height: 1;
+			margin-bottom:0.5rem;
+			
+			&.subhead {
+				font-size: 1.125rem;
+				font-weight: 600;
+			}
+			
+			&.headline {
+				font-size: 3rem;
+				font-weight: 600;
+				@include breakpoint(small) {
+					font-size: 2rem;
+				}
+			}
+			
+			&.date {
+				font-weight: 600;
+				color: $cci-accent;
+			}
+		}
+		
+		p.presents {
+			font-size: 0.75rem;
+			font-weight: 400;
+			
+		}
+		
+	}
+	
+	.scroll-icon {
+		width: 2.5rem;
+		height:2.5rem;
+		background: none;
+		border:2px solid white;
+		border-radius: 50%;
+		position: absolute;
+		margin-bottom: 1rem;
+		bottom:0;
+		left:50%;
+		transform: translate3d(-50%,0,0);
+		display: block;
+		overflow: hidden;
+		
+		.arrow {
+			width: 80%;
+			height: 80%;
+			position: relative;
+			top:10%;
+			left:10%;
+			.line_1 {
+				width: 50%;
+				height:3px;
+				background:white;
+				position: absolute;
+				top:65%;
+				left:0;
+				transform-origin: right center;
+				transform: rotate(45deg);
+			}
+			.line_2 {
+				width: 50%;
+				height:3px;
+				background:white;
+				position: absolute;
+				top:65%;
+				right: 0;
+				transform-origin: left center;
+				transform: rotate(-45deg);
+			}
+		}
+	}
+	
+}
+
+//.sectionS============================================================
+
+//base .section styles
+
+.section {
+	padding:4rem 0;
+	
+	h1 {
+		font-size:1.875rem;
+		text-align: center;
+		font-weight: bold;
+		line-height: 1.2;
+		margin-bottom:1.5rem;
+		span {
+			display: block;
+			font-size: 0.9375rem;
+			font-weight: 600;
+			color: $cci-accent;
+			margin-bottom: 1.125rem;
+		}
+	}
+	
+	text-align: center;
+	
+	
+	
+	.wrapper {
+		@include breakpoint(small) {
+			@include flex-grid-column($columns:12);
+		}
+		
+		@include breakpoint(medium) {
+			@include flex-grid-column($columns:10);
+		}
+		
+		@include breakpoint(large) {
+			@include flex-grid-column($columns:8);
+		}
+	}	
+	
+	
+}
+//EVENT INFO=====================================================
+.section#eventInfo {
+	@include cci-dark();
+	
+	h1 {
+		span {
+			color: $cci-accent;
+		}
+	}
+	
+	.event-details {
+		margin-top:3rem;
+		
+		@include breakpoint(medium) {
+			//margin-top:0;
+		}
+		
+		.columns {
+			margin-bottom:3rem;
+			a {
+				font-weight: 400;
+				color: white;
+				font-size: 0.875rem;
+				width: 2.25rem;
+				display: block;
+				margin-left: auto;
+				margin-right: auto;
+				-webkit-transition:all 500ms ease-in-out;
+				transition:all 500ms ease-in-out;
+				backface-visibility: hidden;
+				//text-decoration: underline;
+				
+				@include breakpoint(large){
+				
+					&:hover {
+						transform: scale(1.2);
+					}
+				}
+			}
+		}
+		
+		p.label {
+			background: none;
+			font-weight: 800;
+			color:$cci-accent;
+			font-size: 1.125rem;
+		}
+		
+		p {
+			margin-bottom: 0.5rem;
+			span {
+				display: block;
+				line-height: 1;
+				&.month-day {
+					font-weight: 800;
+					font-size: 1.125rem;
+				}
+				
+				&.year {
+					font-size: 2.5rem;
+					font-weight: 800;
+				}
+			}
+		}
+		
+	}
+	
+	.featuring {
+		
+		@include breakpoint(medium) {
+			margin-top:2rem;
+		}
+		
+		p.label {
+			background: none;
+			font-weight: 800;
+			color:$cci-accent;
+			font-size: 1.125rem;
+		}
+	}
+	
+	
+	#featureSlick {
+			.slick-slide {
+				position: relative;
+				
+				.cci-slick-caption {
+					position: absolute;
+					left:0;
+					bottom:0;
+					width: 100%;
+					padding:0.5rem;
+					background:rgba(0,0,0,0.5);
+					font-size: 0.8125rem;
+				}
+			}
+			
+			button {
+				background: none;
+				box-shadow: none;//
+			}
+		}
+	
+	
+	#buyTix {
+		margin-top:3rem;
+		background: $cci-secondary;
+		color: $cci-primary;
+		padding-bottom: 0.9375rem;
+		overflow: hidden;
+		border-radius: 3px;
+		h4 {
+			margin-top:0.9375rem;
+		}
+		
+		.column {
+			padding-top:0.9375rem;
+			@include breakpoint(medium) {
+				padding-top:0;
+			}
+		}
+		
+		.column.tix-info {
+			border-bottom: 1px solid $cci-primary;
+			
+			@include breakpoint(medium) {
+				border-bottom: none;
+				border-right: 1px solid $cci-primary;
+			}
+			
+			p {
+				padding:0 1.875rem;
+				@include breakpoint(medium) {
+					text-align: left;
+				}
+			}
+		}
+		
+		.tix-price {
+			p {
+				line-height: 1;
+				
+				
+				&.tix-category {
+					font-weight: 400;
+				}
+				&.tix-amount {
+					font-size: 2.5rem;
+					font-weight: 600;
+				}
+			}
+		}
+	}
+	
+	#locationInfo {
+		background: $cci-accent;
+		color: $cci-primary;
+		padding:0.9375rem;
+		border-bottom-left-radius: 3px;
+		border-bottom-right-radius: 3px;
+		
+		p:not(.room-rate) {
+			@include breakpoint(medium) {
+				width: 70%;
+				margin:auto;
+			}
+		}
+		
+		p.room-rate {
+			font-size: 3rem;
+			font-weight: 600;
+			position: relative;
+			padding-right: 4rem;
+			display: inline-block;
+			span {
+				position: absolute;
+				top:1.5rem;
+				right:0;
+				font-size: 0.8125rem;
+				font-weight: 400;
+			}
+		}
+		
+		button {
+			display: block;
+			background: $cci-primary;
+			margin:auto;
+		}
+	}
+}
+
+.section#gallery {
+	
+	@include cci-light();
+	position: relative;
+	height: auto;
+	
+	
+	@include breakpoint(medium) {
+		min-height: 50vh;
+		//padding:0;
+		
+				
+	}
+	
+	@include breakpoint(large) {
+		
+		position: relative;
+		overflow: hidden;
+		//padding:0;
+		
+		
+	}
+	
+	
+	.cci-slick-wrap {
+		
+		#gallerySlick {
+		
+			.slick-slide {
+				//padding:0.9375rem;
+				img {
+					margin:auto !important;
+					display: block;
+				}
+			}
+			
+			button {
+				background:none;
+				box-shadow: none;
+			}
+			button:before {
+				color:$cci-primary;
+			}
+		}
+		.slick-dots {
+			bottom:auto;
+		}
+	}
+}
+
+.section#stories {
+	@include cci-dark();
+	overflow: hidden;
+	.story {
+		margin-bottom:3rem;
+		opacity: 0;
+		&.slide-n-fade {
+			@include mui-animation(slide("in"), fade("in"));
+			animation-duration: 750ms;
+			animation-fill-mode: forwards;
+			//visibility: visible; 
+		}
+		
+		&:nth-child(2) {
+			animation-delay: 100ms;
+		}
+		
+		&:nth-child(3) {
+			animation-delay: 200ms;
+		}
+		
+		p.story-title {
+			margin-top: 1rem;
+			font-weight: 800;
+			font-size: 1.125rem;
+		}
+		
+	}
+}
+
+.section#aboutCCI {
+	@include cci-light();
+	
+	h3 {
+		margin-top: 2rem;
+		font-size: 1.125rem;
+		
+		@include breakpoint(medium){
+			text-align: left;
+			margin-top:0;
+		}
+	}
+	
+	p {
+		@include breakpoint(medium) {
+			text-align: left;
+		}
+	}
+	a {
+		font-weight: 400;
+	}
+	a:hover {
+		text-decoration: underline;
+	}
+}
+
+.section#sponsor {
+	@include cci-clear();
+	color:$cci-primary;
+	
+	h1 {
+		color: $cci-primary;
+	}
+	h3 {
+		font-size: 1.5rem;
+	}
+	.primary-sponsors {
+		margin-top:2rem;
+		.primary-sponsor {
+			margin-bottom: 0.9375rem;
+			margin-bottom:1rem;
+		}
+	}
+	
+	#cciSecondarySponsors {
+		margin-top: 2rem;
+		
+		#sponsorsSlick {
+			.slick-slide {
+				padding:0.9375rem;
+				img {
+					margin:auto;
+				}
+			}
+			
+			button {
+				background: none;
+				box-shadow: none;
+			&:before {
+				color:$cci-primary;
+			}	
+			}
+		}
+	}
+	
+	#becomeASponsor, #auction {
+		margin-top:3rem;
+		
+		button {
+			margin-bottom: 1rem;
+		}
+		a {
+			font-weight: 400;
+		}
+		
+		//accordion
+		
+		li.is-accordion-submenu-parent {
+			background:$cci-accent;
+			color: $cci-primary;
+			border-bottom: 1px solid rgba(255,255,255,0.25);
+			a {color: #fff !important;}
+			
+			ul.submenu{
+				background: #f1f1f1;
+				padding:1rem 0;
+				li {
+					color:#4d4d4d;
+					margin-left:0.9375rem;
+					margin-right:0.9375rem;
+					text-align: left;
+					border-bottom: 1px solid #d4d4d4;
+					padding:0.25rem;
+				}
+			}
+		}
+		li.is-accordion-submenu-parent[aria-expanded="true"] {
+			background: $cci-primary;
+			color: #fff;
+		}
+	}
+}
+
+footer {
+	background:#f3f3f3;
+	padding:2rem 0;
+	font-size: 0.8125rem;
+	font-weight: 300;
+	.nav {
+		width: 100%;
+		text-align: center;
+		a {padding:0 0.5rem;}
+	}
+}
+
+//REVEALS (MODALS)
+.reveal {
+	background: $cci-secondary;
+	text-align: center;
+	@include breakpoint(medium) {
+		border-radius: 5px;
+	}
+	
+	&.dark {
+		background: $cci-primary;
+		color: $cci-secondary;
+		border: none;
+	}
+	
+	&.light {
+		background: $cci-secondary;
+		color: $cci-primary;
+		border: none;
+	}
+	
+	h3 {
+		text-align: center;
+	}
+	
+	p {
+		text-align: left;
+		img {
+			margin: auto;
+			display: block;
+		}
+	}
+	
+	button {
+		display: block;
+		background:$cci-primary;
+		color: white;
+		margin:auto;
+	}
+}
+
+.reveal[id*="story"] {
+	.close-button {
+		margin-top:0 !important;
+		background: none !important;
+		text-transform: uppercase !important;
+		box-shadow: none !important;
+		width: 30px;
+		height:30px;
+		border: 1px solid $cci-primary;
+		border-radius: 50% !important;
+		padding:0 !important;
+		color: $cci-primary;
+	}
+}
+
+//SLICK CAROUSEL OVERRIDES. DO NOT EDIT!
+	
+	.slick-next, .slick-prev {
+		//width: 58px;
+		//height: 33px;
+		padding:0 !important;
+		width: 32px;
+		height:32px;
+	}
+	
+	.slick-prev {
+		left:-32px;
+	}
+	
+	.slick-next {
+		right:-32px;
+	}
+	
+	.slick-next:before {
+		content:'';
+	}
+	
+	.slick-prev:before {
+		content:'';
+	}
+	.close-button {
+		margin-top:0 !important;
+		background: none !important;
+		text-transform: uppercase !important;
+		box-shadow: none !important;
+		width: 30px;
+		height:30px;
+		border: 1px solid white;
+		border-radius: 50% !important;
+		padding:0 !important;
+	}

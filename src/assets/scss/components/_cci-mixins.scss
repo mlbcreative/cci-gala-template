@@ -1,0 +1,64 @@
+//this file stores any and all mixins specific to the CCI landing page templates
+
+@mixin menu-slide-easing() {
+	transition-timing-function: cubic-bezier(.16,.61,.56,.98);
+}
+
+//animations=====================================================
+/*
+@include mui-series(1s) {
+  .navitem_1  { @include mui-queue(.5s, 0s, slide("in", "up"), fade("in")); }
+  .navitem_2  { @include mui-queue(.5s, .25s, slide("in", "up"), fade("in")); }
+  .navitem_3  { @include mui-queue(.5s, .5s, slide("in", "up"), fade("in")); }
+  .navitem_4  { @include mui-queue(.5s, .75s, slide("in", "up"), fade("in")); }
+  .navitem_5  { @include mui-queue(.5s, 1s, slide("in", "up"), fade("in")); }
+}
+*/
+
+@mixin swell() {
+	
+	-webkit-animation-name: swell-animation;
+	-webkit-animation-duration: 1.25s;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-timing-function: ease-in;
+	-webkit-transform-origin: right center;
+	//-webkit-animation-fill-mode: forwards;
+	
+	animation-name: swell-animation;
+	animation-duration: 1.25s;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in-out;
+	transform-origin: right center;
+	//animation-fill-mode: forwards;
+	
+}
+
+@keyframes swell-animation {
+		0% {
+			transform : scale(1);
+			opacity: 0.5;
+		}
+		50% {
+			transform: scale(1.25);
+			opacity: 1;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 0.5;
+		}
+	}
+	
+	@-webkit-keyframes swell-animation {
+		0% {
+			transform : scale(1);
+			opacity: 0.5;
+		}
+		50% {
+			transform: scale(1.25);
+			opacity:1;
+		}
+		100% {
+			transform: scale(1);
+			opacity: 0.5;
+		}
+	}
